@@ -21,7 +21,7 @@ class TweetAdapter(private val tweets: List<Tweet>): RecyclerView.Adapter<TweetA
         holder.userName.text = tweets[position].userName
     }
 
-    override fun getItemCount(): Int = tweets.size
+    override fun getItemCount(): Int = 10
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var tvTweet = v.tvTweet

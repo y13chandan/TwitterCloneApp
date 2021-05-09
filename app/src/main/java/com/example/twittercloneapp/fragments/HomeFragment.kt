@@ -1,11 +1,17 @@
 package com.example.twittercloneapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.twittercloneapp.R
+import com.example.twittercloneapp.adapters.TweetAdapter
+import com.example.twittercloneapp.model.Tweet
+import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +42,21 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initAvailableOffers(ArrayList())
+    }
+
+    private fun initAvailableOffers(tweets: ArrayList<Tweet>?) {
+//        if (tweets != null && tweets.isNotEmpty() && tweets.size > 0) {
+            rv_tweets.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL ,false)
+//            Log.d("USercart promo size", offers.size.toString())
+        rv_tweets.adapter = TweetAdapter(ArrayList<Tweet>())
+//        } else {
+//            rv_tweets.visibility = View.GONE
+//        }
     }
 
     companion object {
