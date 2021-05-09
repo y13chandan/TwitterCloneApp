@@ -17,8 +17,8 @@ class TweetAdapter(private val tweets: List<Tweet>): RecyclerView.Adapter<TweetA
     }
 
     override fun onBindViewHolder(holder: TweetAdapter.ViewHolder, position: Int) {
-        holder.tvTweet.text = tweets[position].tweetText
-        holder.userName.text = tweets[position].userName
+//        holder.tvTweet.text = tweets[position].tweetText
+//        holder.userName.text = tweets[position].userName
     }
 
     override fun getItemCount(): Int = 10

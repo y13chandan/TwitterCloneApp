@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.twittercloneapp.R
 import com.example.twittercloneapp.adapters.TweetAdapter
 import com.example.twittercloneapp.model.Tweet
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,6 +24,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null

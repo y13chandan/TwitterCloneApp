@@ -17,7 +17,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="chandan"
         android:textColor="@color/black"
@@ -26,11 +26,12 @@
         android:layout_marginStart="@dimen/margin_20"
         android:layout_marginTop="@dimen/margin_30"
         app:layout_constraintTop_toBottomOf="@+id/tvShortName"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvPhone"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="8696884223"
         android:textColor="@color/black"
@@ -39,11 +40,12 @@
         android:layout_marginStart="@dimen/margin_20"
         android:layout_marginTop="@dimen/margin_10"
         app:layout_constraintTop_toBottomOf="@+id/tvName"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvEmail"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="cksingh@gmail.com"
         android:textColor="@color/black"
@@ -52,10 +54,11 @@
         android:layout_marginStart="@dimen/margin_20"
         android:layout_marginTop="@dimen/margin_10"
         app:layout_constraintTop_toBottomOf="@+id/tvPhone"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnLogout"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
