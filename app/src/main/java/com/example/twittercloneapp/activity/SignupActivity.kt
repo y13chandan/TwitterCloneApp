@@ -1,8 +1,10 @@
 package com.example.twittercloneapp.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -31,11 +33,25 @@ class SignupActivity : AppCompatActivity() {
                 )
             }
         }
+        showProgressBar()
 
-        authViewModel.getUserLiveData()?.observe(this, Observer {
+        authViewModel.userLiveData?.observe(this, Observer {
             if (it != null) {
                 Toast.makeText(this, "User ${it.email}  Logged in succesfuuly", Toast.LENGTH_LONG)
                     .show()
+                navigateToMainActivity()
+            }
+            authViewModel.progress.value = false
+        })
+
+    }
+
+    private fun showProgressBar() {
+        authViewModel.progress.observe(this, Observer { showing ->
+            if (showing) {
+                progress_bar.visibility = View.VISIBLE
+            } else {
+                progress_bar.visibility = View.GONE
             }
         })
     }
@@ -58,5 +74,10 @@ class SignupActivity : AppCompatActivity() {
             return false
         }
         return true
+    }
+
+    fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -10,13 +10,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FirebaseAuthViewModel @Inject constructor(private val repository: FirebaseAuthRepository) : ViewModel() {
-    private val userLiveData: MutableLiveData<FirebaseUser>? = null
-
-    fun getUserLiveData(): MutableLiveData<FirebaseUser>? {
-        return repository.getUserLiveData()
-    }
+    var userLiveData: MutableLiveData<FirebaseUser>? = repository.userLiveData
+    val progress = MutableLiveData<Boolean>()
 
     fun createUser(name: String, email: String, phone: String, password: String) {
+        progress.value  = true
         repository.createUser(name, email, phone, password)
     }
 
