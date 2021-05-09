@@ -11,5 +11,6 @@
     <color name="new_grey_color">#4d4c4c</color>
 
     <color name="blue_twitter">#4099FF</color>
+    <color name="light_blue">#87CEFA</color>
     <color name="divider">#E6E6E6</color>
 </resources>

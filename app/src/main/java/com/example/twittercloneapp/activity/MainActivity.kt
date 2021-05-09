@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnNavigationItemSelectedListener  false
         }
+        bottom_navigation.selectedItemId = R.id.navigation_home
     }
 
     private fun openFragment(fragment: Fragment) {

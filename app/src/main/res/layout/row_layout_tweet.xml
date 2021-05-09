@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_16"
+    android:layout_marginEnd="@dimen/margin_16"
+    android:layout_marginTop="@dimen/margin_10"
+    android:layout_marginBottom="@dimen/margin_10"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tvShortName"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_tweet"
+        android:layout_marginStart="@dimen/margin_10"
+        android:padding="@dimen/padding_10"
+        app:layout_constraintStart_toEndOf="@+id/tvShortName"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chandan  singh"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/black"
+            app:fontFamily="@font/open_sans_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="10 mins ago"
+            android:textSize="@dimen/text_size_12sp"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:fontFamily="@font/open_sans"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingEnd="@dimen/padding_10"
+            android:paddingStart="@dimen/padding_10"
+            android:paddingTop="@dimen/margin_5"
+            android:paddingBottom="@dimen/margin_5"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTweet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_12sp"
+            android:textColor="#707070"
+            app:fontFamily="@font/open_sans_semibold"
+            app:layout_constraintTop_toBottomOf="@+id/tvTime"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="Check out this Swiggy coupon to save up to 60% OFF on delicious, hot meals in India"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
