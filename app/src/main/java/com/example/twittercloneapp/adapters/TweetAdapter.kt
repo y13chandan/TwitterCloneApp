@@ -12,7 +12,10 @@ import com.example.twittercloneapp.commons.TwitterCloneAppData
 import com.example.twittercloneapp.model.Tweet
 import kotlinx.android.synthetic.main.row_layout_tweet.view.*
 
-class TweetAdapter(private val tweets: List<Tweet>): RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
+interface TweetAdapterListener {
+    fun onUpdateTweetTapped(tweet: Tweet)
+}
+class TweetAdapter(private val tweets: List<Tweet>, private val listener: TweetAdapterListener): RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TweetAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -26,6 +29,7 @@ class TweetAdapter(private val tweets: List<Tweet>): RecyclerView.Adapter<TweetA
         if (TwitterCloneAppData.getUser()?.id == tweets[position].userData?.id) {
             holder.btnUpdateTweet.visibility = View.VISIBLE
         }
+        holder.btnUpdateTweet.setOnClickListener { listener.onUpdateTweetTapped(tweets[position]) }
     }
 
     override fun getItemCount(): Int = tweets.size

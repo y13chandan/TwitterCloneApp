@@ -20,4 +20,8 @@ class HomeViewModel@Inject constructor(private val repository: HomeRepository) :
     fun addTweet(tweetText: String) {
         repository.addTweet(tweetText)
     }
+
+    fun updateTweet(tweetText: String, id: String) {
+        repository.addTweet(tweetText)
+    }
 }

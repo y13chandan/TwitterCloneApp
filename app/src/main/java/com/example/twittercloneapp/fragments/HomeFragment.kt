@@ -11,13 +11,15 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.twittercloneapp.R
 import com.example.twittercloneapp.adapters.TweetAdapter
+import com.example.twittercloneapp.adapters.TweetAdapterListener
+import com.example.twittercloneapp.model.Tweet
 import com.example.twittercloneapp.viewmodel.FirebaseAuthViewModel
 import com.example.twittercloneapp.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), OnAddTweetListener {
+class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
     private val homeViewModel: HomeViewModel by viewModels()
     private val authViewModel: FirebaseAuthViewModel by viewModels()
 
@@ -51,7 +53,7 @@ class HomeFragment : Fragment(), OnAddTweetListener {
 
             } else {
                 if (tweets.isNotEmpty()) {
-                    rv_tweets.adapter = TweetAdapter(tweets)
+                    rv_tweets.adapter = TweetAdapter(tweets, this)
                 }
             }
         })
@@ -70,10 +72,15 @@ class HomeFragment : Fragment(), OnAddTweetListener {
         Log.d("HomeFragment", tweetString)
     }
 
+    override fun onUpdateTweetTapped(tweet: Tweet) {
+
+    }
+
     companion object {
         @JvmStatic
         fun newInstance() =
             HomeFragment()
     }
+
 
 }
