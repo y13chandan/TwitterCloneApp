@@ -45,12 +45,23 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:fontFamily="@font/open_sans"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnUpdateTweet"
             app:layout_constraintTop_toTopOf="parent"
             android:paddingEnd="@dimen/padding_10"
             android:paddingStart="@dimen/padding_10"
             android:paddingTop="@dimen/margin_5"
             android:paddingBottom="@dimen/margin_5"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnUpdateTweet"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTweet"
