@@ -11,6 +11,7 @@ import com.example.twittercloneapp.model.UserData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -24,6 +25,7 @@ class HomeRepository@Inject constructor(
 
     fun getTweets()  {
         db.collection(Constants.TWEETS)
+                .orderBy("timestamp", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener { result ->
                     val tweetList = ArrayList<Tweet>()
@@ -49,7 +51,7 @@ class HomeRepository@Inject constructor(
     fun addTweet(tweetString: String) {
 
         TwitterCloneAppData.getUser()?.let {
-            var tweet = HashMap<String, Any>()
+            val tweet = HashMap<String, Any>()
             tweet["userData"] = it
             tweet["tweetText"] = tweetString
             tweet["timestamp"] = FieldValue.serverTimestamp()
@@ -57,14 +59,39 @@ class HomeRepository@Inject constructor(
             db.collection(Constants.TWEETS)
                 .add(tweet)
                 .addOnSuccessListener {
+                    getTweets()
                     Log.d("Homerepository", "DocumentSnapshot added with ID: ${it.id}")
                 }
+                    .addOnFailureListener {
+                        Toast.makeText(
+                                appContext.applicationContext,
+                                "Error adding tweet. " + it.message,
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
         }
 
     }
 
-    fun updateTweet(tweetText: String, id: String) {
+    fun updateTweet(tweetString: String, tweetId: String) {
+            val tweet = HashMap<String, Any>()
+            tweet["tweetText"] = tweetString
+            tweet["timestamp"] = FieldValue.serverTimestamp()
 
+
+            db.collection(Constants.TWEETS)
+                    .document(tweetId)
+                    .update(tweet)
+                    .addOnSuccessListener {
+                        getTweets()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(
+                                appContext.applicationContext,
+                                "Error updating tweet. " + it.message,
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
     }
 
 }

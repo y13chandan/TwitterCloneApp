@@ -23,9 +23,6 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
     private val homeViewModel: HomeViewModel by viewModels()
     private val authViewModel: FirebaseAuthViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,20 +57,29 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
     }
 
     private fun showAddTweetDialog() {
-        val transaction = childFragmentManager.beginTransaction()
-        val fragment = AddTweetDialogFragment.newInstance()
-        fragment.listener = this
-        fragment.show(transaction, "add tweet")
+        openDialog(false, null, null)
+    }
+
+    override fun onUpdateTweetTapped(tweet: Tweet) {
+        openDialog(true, tweet.id, tweet.tweetText)
     }
 
 
-    override fun onTweetTapped(tweetString: String) {
+    override fun onAddTweet(tweetString: String) {
         homeViewModel.addTweet(tweetString)
         Log.d("HomeFragment", tweetString)
     }
 
-    override fun onUpdateTweetTapped(tweet: Tweet) {
+    override fun onUpdateTweet(tweetString: String, tweetId: String) {
+        homeViewModel.updateTweet(tweetString, tweetId)
+    }
 
+
+    private fun openDialog(isForUpdate: Boolean, tweetId: String?, tweetString: String?) {
+        val transaction = childFragmentManager.beginTransaction()
+        val fragment = AddTweetDialogFragment.newInstance(isForUpdate, tweetId, tweetString)
+        fragment.listener = this
+        fragment.show(transaction, "add tweet")
     }
 
     companion object {
@@ -81,6 +87,7 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
         fun newInstance() =
             HomeFragment()
     }
+
 
 
 }
