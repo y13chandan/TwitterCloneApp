@@ -3,6 +3,7 @@ package com.example.twittercloneapp.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.twittercloneapp.R
 import com.example.twittercloneapp.model.Tweet
@@ -17,14 +18,14 @@ class TweetAdapter(private val tweets: List<Tweet>): RecyclerView.Adapter<TweetA
     }
 
     override fun onBindViewHolder(holder: TweetAdapter.ViewHolder, position: Int) {
-//        holder.tvTweet.text = tweets[position].tweetText
-//        holder.userName.text = tweets[position].userName
+        holder.tvTweet.text = tweets[position].tweetText
+        holder.userName.text = tweets[position].userData?.name
     }
 
-    override fun getItemCount(): Int = 10
+    override fun getItemCount(): Int = tweets.size
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        var tvTweet = v.tvTweet
-        val userName = v.tvName
+        var tvTweet: AppCompatTextView = v.tvTweet
+        val userName: AppCompatTextView = v.tvName
     }
 }

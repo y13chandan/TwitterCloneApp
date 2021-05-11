@@ -3,7 +3,6 @@ package com.example.twittercloneapp.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Message
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -12,7 +11,6 @@ import com.example.twittercloneapp.R
 import com.example.twittercloneapp.extensions.isValidEmail
 import com.example.twittercloneapp.viewmodel.FirebaseAuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.activity_signup.etEmail
 
@@ -76,8 +74,9 @@ class SignupActivity : AppCompatActivity() {
         return true
     }
 
-    fun navigateToMainActivity() {
+    private fun navigateToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
 }

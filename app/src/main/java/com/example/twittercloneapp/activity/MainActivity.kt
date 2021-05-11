@@ -34,11 +34,11 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.navigation_home -> {
-                    openFragment(HomeFragment.newInstance("", "", ))
+                    openFragment(HomeFragment.newInstance())
                     return@setOnNavigationItemSelectedListener  true
                 }
                 R.id.navigation_profile -> {
-                    openFragment(ProfileFragment.newInstance("", ""))
+                    openFragment(ProfileFragment.newInstance())
                     return@setOnNavigationItemSelectedListener  true
                 }
             }
@@ -55,7 +55,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToLoginActivity() {
-        val intent = Intent(this, SignupActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
 }

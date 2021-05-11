@@ -58,6 +58,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.7.0'
     implementation 'com.google.firebase:firebase-firestore:22.1.2'
 
+    // Declare the dependency for the Cloud Firestore library
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
 
     //dagger-hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -69,8 +72,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$viewmodel_version"
 
+    implementation 'io.paperdb:paperdb:2.6'
+
 
     implementation 'androidx.activity:activity-ktx:1.2.3'
+    implementation "androidx.fragment:fragment-ktx:1.3.3"
 
 
 }
