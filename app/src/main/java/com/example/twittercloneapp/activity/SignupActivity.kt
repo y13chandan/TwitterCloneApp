@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.twittercloneapp.R
+import com.example.twittercloneapp.commons.ProgressDialog
 import com.example.twittercloneapp.extensions.isValidEmail
 import com.example.twittercloneapp.viewmodel.FirebaseAuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,11 +46,12 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun showProgressBar() {
+        val dialog =  ProgressDialog.dialog(this, "signing in...")
         authViewModel.progress.observe(this, Observer { showing ->
             if (showing) {
-                progress_bar.visibility = View.VISIBLE
+               dialog.show()
             } else {
-                progress_bar.visibility = View.GONE
+                dialog.dismiss()
             }
         })
     }
