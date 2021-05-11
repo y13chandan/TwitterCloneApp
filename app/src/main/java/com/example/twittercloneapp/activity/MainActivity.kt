@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.twittercloneapp.R
+import com.example.twittercloneapp.commons.TwitterCloneAppData
 import com.example.twittercloneapp.fragments.HomeFragment
 import com.example.twittercloneapp.fragments.ProfileFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         handleBottomNavigation()
-        if (authentication.currentUser == null) {
+        if (TwitterCloneAppData.getUser() == null) {
             navigateToLoginActivity()
         } else {
             Toast.makeText(this, "USer is logged In", Toast.LENGTH_LONG).show()

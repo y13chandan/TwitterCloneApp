@@ -67,7 +67,7 @@ class FirebaseAuthRepository @Inject constructor(
                         "Login Failure: " + task.exception?.message,
                         Toast.LENGTH_SHORT
                     ).show();
-                    userLiveData?.postValue(null)
+                    loginUserLiveData?.postValue(null)
                 }
             }
 
