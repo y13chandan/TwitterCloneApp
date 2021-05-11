@@ -1,5 +1,7 @@
 package com.example.twittercloneapp.fragments
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,6 +19,7 @@ import com.example.twittercloneapp.viewmodel.FirebaseAuthViewModel
 import com.example.twittercloneapp.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
@@ -40,13 +43,13 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
 
     private fun initViews() {
         rv_tweets.layoutManager = LinearLayoutManager(
-                context,
-                LinearLayoutManager.VERTICAL,
-                false
+            context,
+            LinearLayoutManager.VERTICAL,
+            false
         )
         homeViewModel.getTweets()
         homeViewModel.tweetListLiveData?.observe(viewLifecycleOwner, Observer { tweets ->
-            if (tweets == null)  {
+            if (tweets == null) {
 
             } else {
                 if (tweets.isNotEmpty()) {
@@ -62,6 +65,18 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
 
     override fun onUpdateTweetTapped(tweet: Tweet) {
         openDialog(true, tweet.id, tweet.tweetText)
+    }
+
+    override fun onDeleteTweetTapped(tweet: Tweet) {
+        AlertDialog.Builder(context)
+            .setTitle("Delete Tweet")
+            .setMessage("Are you sure you want to delete this tweet?")
+            .setPositiveButton("Yes") { dialog: DialogInterface, _: Int ->
+                tweet.id?.let { homeViewModel.deleteTweet(it) }
+                dialog.dismiss()
+            }
+            .setNegativeButton("No") { dialog: DialogInterface, which: Int -> dialog.dismiss() }
+            .show()
     }
 
 

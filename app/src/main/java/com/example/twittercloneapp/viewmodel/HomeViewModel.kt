@@ -22,6 +22,10 @@ class HomeViewModel@Inject constructor(private val repository: HomeRepository) :
     }
 
     fun updateTweet(tweetText: String, id: String) {
-        repository.addTweet(tweetText)
+        repository.updateTweet(tweetText, id)
+    }
+
+    fun deleteTweet(id: String) {
+        repository.deleteTweet(id)
     }
 }

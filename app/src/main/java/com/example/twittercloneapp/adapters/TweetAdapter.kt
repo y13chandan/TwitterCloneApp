@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.row_layout_tweet.view.*
 
 interface TweetAdapterListener {
     fun onUpdateTweetTapped(tweet: Tweet)
+    fun onDeleteTweetTapped(tweet: Tweet)
 }
 class TweetAdapter(private val tweets: List<Tweet>, private val listener: TweetAdapterListener): RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
 
@@ -28,8 +29,10 @@ class TweetAdapter(private val tweets: List<Tweet>, private val listener: TweetA
         holder.userName.text = tweets[position].userData?.name
         if (TwitterCloneAppData.getUser()?.id == tweets[position].userData?.id) {
             holder.btnUpdateTweet.visibility = View.VISIBLE
+            holder.btnDeleteTweet.visibility = View.VISIBLE
         }
         holder.btnUpdateTweet.setOnClickListener { listener.onUpdateTweetTapped(tweets[position]) }
+        holder.btnDeleteTweet.setOnClickListener { listener.onDeleteTweetTapped(tweets[position]) }
     }
 
     override fun getItemCount(): Int = tweets.size
@@ -38,5 +41,6 @@ class TweetAdapter(private val tweets: List<Tweet>, private val listener: TweetA
         var tvTweet: AppCompatTextView = v.tvTweet
         val userName: AppCompatTextView = v.tvName
         val btnUpdateTweet: AppCompatImageButton = v.btnUpdateTweet
+        val btnDeleteTweet: AppCompatImageButton = v.btnDeleteTweet
     }
 }

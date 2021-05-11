@@ -76,7 +76,6 @@ class HomeRepository@Inject constructor(
     fun updateTweet(tweetString: String, tweetId: String) {
             val tweet = HashMap<String, Any>()
             tweet["tweetText"] = tweetString
-            tweet["timestamp"] = FieldValue.serverTimestamp()
 
 
             db.collection(Constants.TWEETS)
@@ -92,6 +91,22 @@ class HomeRepository@Inject constructor(
                                 Toast.LENGTH_SHORT
                         ).show();
                     }
+    }
+
+    fun deleteTweet(tweetId: String) {
+        db.collection(Constants.TWEETS)
+            .document(tweetId)
+            .delete()
+            .addOnSuccessListener {
+                getTweets()
+            }
+            .addOnFailureListener {
+                Toast.makeText(
+                    appContext.applicationContext,
+                    "Error updating tweet. " + it.message,
+                    Toast.LENGTH_SHORT
+                ).show();
+            }
     }
 
 }
