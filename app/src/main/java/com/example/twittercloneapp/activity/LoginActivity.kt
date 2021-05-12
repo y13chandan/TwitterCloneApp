@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.twittercloneapp.R
 import androidx.lifecycle.Observer
+import com.example.twittercloneapp.commons.ProgressDialog
 import com.example.twittercloneapp.extensions.isValidEmail
 import com.example.twittercloneapp.viewmodel.FirebaseAuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +32,8 @@ class LoginActivity : AppCompatActivity() {
             navigateToSignInActivity()
         }
 
+        showProgressBar()
+
         btn_login_with_otp.setOnClickListener {
             if (isValidData()) {
                 authViewModel.loginUser(etEmail.text.toString(), etpassword.text.toString())
@@ -44,6 +47,17 @@ class LoginActivity : AppCompatActivity() {
                 navigateToMainActivity()
             }
             authViewModel.progress.value = false
+        })
+    }
+
+    private fun showProgressBar() {
+        val dialog =  ProgressDialog.dialog(this, "Logging in...")
+        authViewModel.progress.observe(this, Observer { showing ->
+            if (showing) {
+                dialog.show()
+            } else {
+                dialog.dismiss()
+            }
         })
     }
 

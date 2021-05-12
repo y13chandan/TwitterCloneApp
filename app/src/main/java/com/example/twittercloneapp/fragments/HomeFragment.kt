@@ -8,24 +8,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.twittercloneapp.R
 import com.example.twittercloneapp.adapters.TweetAdapter
 import com.example.twittercloneapp.adapters.TweetAdapterListener
+import com.example.twittercloneapp.commons.ProgressDialog
 import com.example.twittercloneapp.model.Tweet
 import com.example.twittercloneapp.viewmodel.FirebaseAuthViewModel
 import com.example.twittercloneapp.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.progress_dialog.*
 
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
-    private val homeViewModel: HomeViewModel by viewModels()
-    private val authViewModel: FirebaseAuthViewModel by viewModels()
-
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,12 +43,13 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
     }
 
     private fun initViews() {
+        showProgressBar("loading...")
         rv_tweets.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.VERTICAL,
             false
         )
-        homeViewModel.getTweets()
+
         homeViewModel.tweetListLiveData?.observe(viewLifecycleOwner, Observer { tweets ->
             if (tweets == null) {
 
@@ -56,6 +58,7 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
                     rv_tweets.adapter = TweetAdapter(tweets, this)
                 }
             }
+            homeViewModel.progress.value = false
         })
     }
 
@@ -95,6 +98,19 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
         val fragment = AddTweetDialogFragment.newInstance(isForUpdate, tweetId, tweetString)
         fragment.listener = this
         fragment.show(transaction, "add tweet")
+    }
+
+    private fun showProgressBar(text: String) {
+        context?.let {
+            val dialog =  ProgressDialog.dialog(it, text)
+            homeViewModel.progress.observe(viewLifecycleOwner, Observer { showing ->
+                if (showing) {
+                    dialog.show()
+                } else {
+                    dialog.dismiss()
+                }
+            })
+        }
     }
 
     companion object {

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.twittercloneapp.R
 import com.example.twittercloneapp.commons.TwitterCloneAppData
 import com.example.twittercloneapp.model.Tweet
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.row_layout_tweet.view.*
 
 interface TweetAdapterListener {
@@ -34,6 +35,7 @@ class TweetAdapter(private val tweets: List<Tweet>, private val listener: TweetA
         holder.btnUpdateTweet.setOnClickListener { listener.onUpdateTweetTapped(tweets[position]) }
         holder.btnDeleteTweet.setOnClickListener { listener.onDeleteTweetTapped(tweets[position]) }
     }
+
 
     override fun getItemCount(): Int = tweets.size
 

@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".activity.SignupActivity">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageTwitter"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_twitter"
+        android:layout_marginTop="@dimen/margin_30"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/message_register"
         android:layout_width="wrap_content"
@@ -14,10 +24,11 @@
         android:layout_marginTop="@dimen/margin_10"
         android:layout_marginEnd="@dimen/margin_20"
         android:fontFamily="@font/open_sans_bold"
-        android:text="Create a new account"
+        android:text="Join Twitter today"
         android:textSize="@dimen/text_size_18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageTwitter" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameInputLayout"
@@ -25,7 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_20"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_20"
         android:layout_marginEnd="@dimen/margin_20"
         app:boxStrokeColor="@color/divider"
         app:layout_constraintEnd_toEndOf="parent"

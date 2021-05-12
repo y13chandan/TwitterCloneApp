@@ -21,6 +21,7 @@ class FirebaseAuthViewModel @Inject constructor(private val repository: Firebase
     }
 
     fun loginUser( email: String, password: String)  {
+        progress.value  = true
         repository.loginUser(email, password)
     }
 

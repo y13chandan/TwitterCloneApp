@@ -13,7 +13,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        android:text="C"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:background="@drawable/circle_light_blue"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvName"

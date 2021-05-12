@@ -11,21 +11,29 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel@Inject constructor(private val repository: HomeRepository) : ViewModel() {
     var tweetListLiveData: MutableLiveData<List<Tweet>>? = repository.tweets
-    val progress = MutableLiveData<Boolean>()
+    val progress = MutableLiveData<Boolean>(false)
 
-    fun getTweets() {
+    init {
+        getTweets()
+    }
+
+    private fun getTweets() {
+        progress.value = true
         repository.getTweets()
     }
 
     fun addTweet(tweetText: String) {
+        progress.value = true
         repository.addTweet(tweetText)
     }
 
     fun updateTweet(tweetText: String, id: String) {
+        progress.value = true
         repository.updateTweet(tweetText, id)
     }
 
     fun deleteTweet(id: String) {
+        progress.value = true
         repository.deleteTweet(id)
     }
 }
