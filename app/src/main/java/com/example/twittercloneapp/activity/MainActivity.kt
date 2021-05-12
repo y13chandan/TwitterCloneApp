@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
         handleBottomNavigation()
         if (TwitterCloneAppData.getUser() == null) {
             navigateToLoginActivity()
-        } else {
-            Toast.makeText(this, "USer is logged In", Toast.LENGTH_LONG).show()
         }
     }
 

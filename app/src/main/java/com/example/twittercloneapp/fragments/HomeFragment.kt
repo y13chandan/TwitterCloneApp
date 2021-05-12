@@ -43,7 +43,7 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
     }
 
     private fun initViews() {
-        showProgressBar("loading...")
+        showProgressBar("Loading...")
         rv_tweets.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.VERTICAL,
