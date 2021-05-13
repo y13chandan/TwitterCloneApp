@@ -1,6 +1,6 @@
 # TwitterCloneApp
 
-Twitter clone app with Firebase Firestore using MVVM architechture. It has functionality like add, update and delete tweets (Multi person realtime twitter app).
+Twitter clone app with Firebase Firestore using MVVM architechture. It has functionality like add, update and delete tweets (**Multi person realtime twitter app**).
 
 ## Features
 
