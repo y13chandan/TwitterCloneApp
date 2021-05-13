@@ -9,6 +9,7 @@ import com.example.twittercloneapp.commons.TwitterCloneAppData
 import com.example.twittercloneapp.model.Tweet
 import com.example.twittercloneapp.model.UserData
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -108,5 +109,25 @@ class HomeRepository@Inject constructor(
                 ).show();
             }
     }
+
+    fun addSnapShotListener() {
+        db.collection(Constants.TWEETS).addSnapshotListener { snapshots, e ->
+            if (e != null) {
+                Log.w("Homerepository", "listen:error", e)
+                return@addSnapshotListener
+            }
+
+            for (dc in snapshots!!.documentChanges) {
+                val tweet = dc.document.toObject(Tweet::class.java)
+                if (tweet.userData?.id != TwitterCloneAppData.getUser()?.id) {
+                    when (dc.type) {
+                        DocumentChange.Type.ADDED -> getTweets()
+                        DocumentChange.Type.MODIFIED -> getTweets()
+                        DocumentChange.Type.REMOVED -> getTweets()
+                    }
+                }
+                }
+            }
+        }
 
 }

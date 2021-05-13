@@ -23,9 +23,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        handleBottomNavigation()
-        if (TwitterCloneAppData.getUser() == null) {
+        if (TwitterCloneAppData.getUser() == null && authentication.currentUser == null) {
             navigateToLoginActivity()
+        } else {
+            handleBottomNavigation()
         }
     }
 

@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.progress_dialog.*
 @AndroidEntryPoint
 class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
     private val homeViewModel: HomeViewModel by activityViewModels()
+    private var adapter: TweetAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,14 +53,28 @@ class HomeFragment : Fragment(), OnAddTweetListener, TweetAdapterListener {
 
         homeViewModel.tweetListLiveData?.observe(viewLifecycleOwner, Observer { tweets ->
             if (tweets == null) {
-
+                showEmptyView()
             } else {
                 if (tweets.isNotEmpty()) {
-                    rv_tweets.adapter = TweetAdapter(tweets, this)
+                    clEmptyView.visibility = View.GONE
+                    if (adapter ==  null) {
+                        adapter = TweetAdapter(this)
+                    }
+                    adapter?.tweets = tweets
+                    rv_tweets.adapter = adapter
+                } else {
+                    showEmptyView()
                 }
             }
             homeViewModel.progress.value = false
         })
+    }
+
+    private fun showEmptyView() {
+        if (adapter != null) {
+            adapter?.tweets = ArrayList<Tweet>()
+        }
+        clEmptyView.visibility = View.VISIBLE
     }
 
     private fun showAddTweetDialog() {

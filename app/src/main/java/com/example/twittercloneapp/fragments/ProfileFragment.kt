@@ -30,6 +30,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        logout()
     }
 
     private fun initViews() {
@@ -39,7 +40,6 @@ class ProfileFragment : Fragment() {
             tvEmail.text = it.email
             it.name?.let { it1 -> setProfilePicture(it1) }
         }
-        logout()
     }
 
     private fun setProfilePicture(userName: String) {
@@ -58,14 +58,14 @@ class ProfileFragment : Fragment() {
     }
 
     private fun logout() {
-        btnLogout.setOnClickListener {
-            authentication.signOut()
-        }
         authentication.addAuthStateListener {
-            if (it.currentUser == null)  {
-                TwitterCloneAppData.setUserData(null)
+            if (it.currentUser == null && this is ProfileFragment)  {
                 navigateToLoginActivity()
             }
+        }
+        btnLogout.setOnClickListener {
+            authentication.signOut()
+            TwitterCloneAppData.setUserData(null)
         }
     }
 

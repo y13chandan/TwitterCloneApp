@@ -14,6 +14,7 @@ class HomeViewModel@Inject constructor(private val repository: HomeRepository) :
     val progress = MutableLiveData<Boolean>(false)
 
     init {
+        repository.addSnapShotListener()
         getTweets()
     }
 

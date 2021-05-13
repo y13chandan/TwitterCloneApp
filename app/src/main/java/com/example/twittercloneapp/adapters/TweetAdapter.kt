@@ -9,15 +9,22 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.twittercloneapp.R
 import com.example.twittercloneapp.commons.TwitterCloneAppData
+import com.example.twittercloneapp.commons.autoNotify
 import com.example.twittercloneapp.model.Tweet
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.row_layout_tweet.view.*
+import kotlin.properties.Delegates.observable
 
 interface TweetAdapterListener {
     fun onUpdateTweetTapped(tweet: Tweet)
     fun onDeleteTweetTapped(tweet: Tweet)
 }
-class TweetAdapter(private val tweets: List<Tweet>, private val listener: TweetAdapterListener): RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
+class TweetAdapter(private val listener: TweetAdapterListener): RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
+
+    var tweets: List<Tweet> by observable(emptyList()) { _, old, new ->
+        autoNotify(old, new) { o, n -> o.id == n.id }
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TweetAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
