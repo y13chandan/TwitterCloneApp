@@ -54,7 +54,8 @@
         android:hint="Enter email"
         android:inputType="textEmailAddress"
         android:textColor="@color/new_grey_color"
-        android:textSize="@dimen/text_size_14sp"/>
+        android:textSize="@dimen/text_size_14sp"
+        android:imeOptions="actionNext"/>
 
   </com.google.android.material.textfield.TextInputLayout>
 

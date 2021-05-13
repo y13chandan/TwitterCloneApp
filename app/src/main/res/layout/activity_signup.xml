@@ -80,7 +80,8 @@
                 android:hint="Name"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/new_grey_color"
-                android:textSize="@dimen/text_size_14sp" />
+                android:textSize="@dimen/text_size_14sp"
+                android:imeOptions="actionNext"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -105,7 +106,8 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/new_grey_color"
-                android:textSize="@dimen/text_size_14sp" />
+                android:textSize="@dimen/text_size_14sp"
+                android:imeOptions="actionNext"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -131,7 +133,8 @@
                 android:hint="Phone"
                 android:inputType="phone"
                 android:textColor="@color/new_grey_color"
-                android:textSize="@dimen/text_size_14sp" />
+                android:textSize="@dimen/text_size_14sp"
+                android:imeOptions="actionNext"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -157,7 +160,8 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textColor="@color/new_grey_color"
-                android:textSize="@dimen/text_size_14sp" />
+                android:textSize="@dimen/text_size_14sp"
+                android:imeOptions="actionNext"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -176,33 +180,6 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:fontFamily="@font/open_sans"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:textColor="@color/new_grey_color"
-                android:textSize="@dimen/text_size_14sp"
-                android:imeOptions="actionDone"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputLayoutConfirmPassword1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_5"
-            android:layout_marginEnd="@dimen/margin_20"
-            app:boxStrokeColor="@color/divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputLayoutConfirmPassword"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etConfirmPassword1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -235,7 +212,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputLayoutConfirmPassword1" />
+            app:layout_constraintTop_toBottomOf="@id/inputLayoutConfirmPassword" />
 
 
         <ProgressBar
