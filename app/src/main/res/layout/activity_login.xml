@@ -80,7 +80,9 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="@color/new_grey_color"
-        android:textSize="@dimen/text_size_14sp" />
+        android:textSize="@dimen/text_size_14sp"
+        android:imeOptions="actionDone"/>
+
   </com.google.android.material.textfield.TextInputLayout>
 
 
