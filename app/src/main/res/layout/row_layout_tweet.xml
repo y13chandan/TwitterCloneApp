@@ -22,7 +22,6 @@
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chandan  singh"
             android:textSize="@dimen/text_size_16sp"
             android:textColor="@color/black"
             app:fontFamily="@font/open_sans_bold"
@@ -33,7 +32,6 @@
             android:id="@+id/tvTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="10 mins ago"
             android:textSize="@dimen/text_size_12sp"
             android:textAllCaps="false"
             android:textColor="@color/black"
@@ -52,6 +50,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/padding_10"
             android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginEnd="2dp"
             android:src="@drawable/ic_edit"
             app:layout_constraintEnd_toStartOf="@+id/btnDeleteTweet"
             app:layout_constraintTop_toTopOf="parent"
@@ -69,8 +68,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone"/>
 
-
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTweet"
             android:layout_width="match_parent"
@@ -79,8 +76,7 @@
             android:textColor="#707070"
             app:fontFamily="@font/open_sans_semibold"
             app:layout_constraintTop_toBottomOf="@+id/tvTime"
-            android:layout_marginTop="@dimen/margin_10"
-            android:text="Check out this Swiggy coupon to save up to 60% OFF on delicious, hot meals in India"/>
+            android:layout_marginTop="@dimen/margin_10"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
