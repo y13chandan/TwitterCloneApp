@@ -4,11 +4,15 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
 import com.example.twittercloneapp.R
 import kotlinx.android.synthetic.main.fragment_add_tweet_dialog.*
@@ -63,12 +67,22 @@ class AddTweetDialogFragment : DialogFragment() {
 
     private fun initView() {
         btnCancel.setOnClickListener { dismiss() }
+        etTweet.doAfterTextChanged {
+            it?.let {
+                if (it.toString().length > 280) {
+                    context?.let { ctx -> etTweet.setTextColor(ctx.getColor(R.color.red)) }
+                    Toast.makeText(context, "You have crossed the maximum text limit is 280", Toast.LENGTH_LONG).show()
+                } else {
+                    context?.let { ctx -> etTweet.setTextColor(ctx.getColor(R.color.grey_dark)) }
+                }
+            }
+        }
         if (isForUpdate == true) {
             btnAddTweet.text = "Update"
             etTweet.setText(tweetString)
         }
         btnAddTweet.setOnClickListener {
-            if (!etTweet.text.isNullOrEmpty()) {
+            if (etTweet != null && !etTweet.text.isNullOrEmpty() && etTweet.text?.length!! <= 280) {
                 if (isForUpdate == true) {
                     tweetId?.let { it1 -> listener?.onUpdateTweet(etTweet.text.toString(), it1) }
                 } else {
@@ -76,6 +90,7 @@ class AddTweetDialogFragment : DialogFragment() {
                 }
             } else {
                 Toast.makeText(context, "Please enter the valid tweet", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
             }
             dismiss()
         }

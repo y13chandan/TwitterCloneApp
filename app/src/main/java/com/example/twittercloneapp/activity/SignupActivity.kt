@@ -22,22 +22,29 @@ class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+        initView()
+    }
+
+    private fun initView() {
+        btn_back.setOnClickListener {
+            onBackPressed()
+        }
+        showProgressBar()
         btnRegister.setOnClickListener {
             if (isValidData()) {
                 authViewModel.createUser(
-                    etName.text.toString(),
-                    etEmail.text.toString(),
-                    etPhone.text.toString(),
-                    etPassword.text.toString()
+                        etName.text.toString(),
+                        etEmail.text.toString(),
+                        etPhone.text.toString(),
+                        etPassword.text.toString()
                 )
             }
         }
-        showProgressBar()
 
         authViewModel.userLiveData?.observe(this, Observer {
             if (it != null) {
                 Toast.makeText(this, "User ${it.email}  Logged in succesfuuly", Toast.LENGTH_LONG)
-                    .show()
+                        .show()
                 navigateToMainActivity()
             }
             authViewModel.progress.value = false
@@ -80,5 +87,9 @@ class SignupActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
