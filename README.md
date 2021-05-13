@@ -16,5 +16,6 @@ Twitter clone app with Firebase Firestore using MVVM architechture. It has funct
 • At Profile tab page user details and logout is there. <br>
 
 <h2>Demo</h2>
-• Login Page ![WhatsApp Image 2021-05-13 at 16 11 20 (3)](https://user-images.githubusercontent.com/19749442/118116628-1f221f00-b408-11eb-8d45-120d76ad494b.jpeg)
+• Login Page 
+https://user-images.githubusercontent.com/19749442/118116628-1f221f00-b408-11eb-8d45-120d76ad494b.jpeg
 
