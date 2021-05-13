@@ -21,20 +21,20 @@ Twitter clone app with Firebase Firestore using MVVM architechture. It has funct
 
 ## Demo
 
-- Login Page 
-- ![WhatsApp Image 2021-05-13 at 16 11 20 (3)](https://user-images.githubusercontent.com/19749442/118118458-98227600-b40a-11eb-8e70-1a0e9aad255f.jpeg)
+- Login Page <br>
+ ![WhatsApp Image 2021-05-13 at 16 11 20 (3)](https://user-images.githubusercontent.com/19749442/118118458-98227600-b40a-11eb-8e70-1a0e9aad255f.jpeg)
 
-- Signup Page 
-- ![WhatsApp Image 2021-05-13 at 16 11 20 (4)](https://user-images.githubusercontent.com/19749442/118118532-ac667300-b40a-11eb-9518-4de35c3b47ec.jpeg)
+- Signup Page <br>
+ ![WhatsApp Image 2021-05-13 at 16 11 20 (4)](https://user-images.githubusercontent.com/19749442/118118532-ac667300-b40a-11eb-9518-4de35c3b47ec.jpeg)
 
-- Home Tab Page 
-- ![WhatsApp Image 2021-05-13 at 16 11 20 (2)](https://user-images.githubusercontent.com/19749442/118117714-9ad09b80-b409-11eb-9f45-21ac7bd3acab.jpeg)
+- Home Tab Page <br>
+ ![WhatsApp Image 2021-05-13 at 16 11 20 (2)](https://user-images.githubusercontent.com/19749442/118117714-9ad09b80-b409-11eb-9f45-21ac7bd3acab.jpeg)
 
-- Home Page Tab without tweets 
-- ![WhatsApp Image 2021-05-13 at 16 11 20](https://user-images.githubusercontent.com/19749442/118119064-6a89fc80-b40b-11eb-8b35-992e26cf6f7c.jpeg)
+- Home Page Tab without tweets <br>
+ ![WhatsApp Image 2021-05-13 at 16 11 20](https://user-images.githubusercontent.com/19749442/118119064-6a89fc80-b40b-11eb-8b35-992e26cf6f7c.jpeg)
 
-- Add Tweet Page
-- ![WhatsApp Image 2021-05-13 at 16 04 44 (1)](https://user-images.githubusercontent.com/19749442/118118939-3adaf480-b40b-11eb-9422-5705ffd13309.jpeg)
+- Add Tweet Page <br>
+ ![WhatsApp Image 2021-05-13 at 16 04 44 (1)](https://user-images.githubusercontent.com/19749442/118118939-3adaf480-b40b-11eb-9422-5705ffd13309.jpeg)
 
-- Profile Page
--  ![WhatsApp Image 2021-05-13 at 16 11 20 (1)](https://user-images.githubusercontent.com/19749442/118119159-9311f680-b40b-11eb-8bb8-773f93935305.jpeg)
+- Profile Page <br>
+  ![WhatsApp Image 2021-05-13 at 16 11 20 (1)](https://user-images.githubusercontent.com/19749442/118119159-9311f680-b40b-11eb-8bb8-773f93935305.jpeg)
