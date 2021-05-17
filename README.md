@@ -38,3 +38,21 @@ Twitter clone app with Firebase Firestore using MVVM architechture. It has funct
 
 - Profile Page <br>
   ![WhatsApp Image 2021-05-13 at 16 11 20 (1)](https://user-images.githubusercontent.com/19749442/118119159-9311f680-b40b-11eb-8bb8-773f93935305.jpeg)
+  
+  
+## Gradle Dependencies
+
+TwitterCloneApp is currently using the following dependency.
+
+| Dependency | Use |
+| ------ | ------ |
+| [Dagger Hilt][dagger] | For dependency injection  |
+| [Firebase/Firestore][firestore] | To store and fetch data at realtime |
+| [Firebase/Auth][fireAuth] | To authenticate and create user |
+| [ViewModel][viewModel] |  for preparing and managing the data for an Activity or a Fragment |
+
+
+   [dagger]: <https://developer.android.com/training/dependency-injection/hilt-android>
+   [firestore]: <https://firebase.google.com/docs/firestore>
+   [fireAuth]: <https://firebase.google.com/docs/auth>
+   [viewModel]: <https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel>
